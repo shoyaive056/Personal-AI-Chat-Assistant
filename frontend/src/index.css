@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color tokens as RGB triplets (not hex) so Tailwind's opacity modifiers
+   like bg-ink/30 work correctly. .dark on <html> (toggled by
+   ThemeContext) swaps every value below for its dark-mode counterpart —
+   components never need their own dark: variants. */
+:root {
+  --color-ink: 27 31 29; /* #1B1F1D */
+  --color-paper: 246 245 241; /* #F6F5F1 */
+  --color-surface: 255 255 255; /* #FFFFFF */
+  --color-border: 228 225 217; /* #E4E1D9 */
+  --color-slate: 107 111 106; /* #6B6F6A */
+  --color-moss: 62 107 88; /* #3E6B58 */
+  --color-moss-dark: 46 83 68; /* #2E5344 */
+  --color-moss-light: 234 240 236; /* #EAF0EC */
+  --color-rust: 138 59 52; /* #8A3B34 */
+  --color-rust-bg: 251 242 241; /* #FBF2F1 */
+  --color-rust-border: 217 194 190; /* #D9C2BE */
+}
+
+.dark {
+  --color-ink: 236 235 230; /* #ECEBE6 */
+  --color-paper: 22 24 26; /* #16181A */
+  --color-surface: 30 34 32; /* #1E2220 */
+  --color-border: 44 48 45; /* #2C302D */
+  --color-slate: 154 158 151; /* #9A9E97 */
+  --color-moss: 92 154 128; /* #5C9A80 */
+  --color-moss-dark: 111 175 147; /* #6FAF93 */
+  --color-moss-light: 34 48 42; /* #22302A */
+  --color-rust: 227 143 134; /* #E38F86 */
+  --color-rust-bg: 58 36 34; /* #3A2422 */
+  --color-rust-border: 92 51 47; /* #5C332F */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink antialiased transition-colors duration-200;
+}
+
+/* Thin, quiet scrollbar for the conversation column */
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background-color: theme("colors.border");
+  border-radius: 999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
